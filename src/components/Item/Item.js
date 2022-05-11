@@ -1,5 +1,5 @@
 import ItemCount from "../ItemCount/ItemCount"
-import { Container, Card } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 
 /* CARD CON EL PRODUCTO Y LOS BOTONES DEL ITEMCOUNT*/
 export default function Item ({product}) {
@@ -12,7 +12,7 @@ export default function Item ({product}) {
 
 
     return(
-            <Card border="light" style={{ width: '18rem', border: '3px solid #000000', margin:'30px'}}>
+            <Card border="light" style={{ width: '18rem', height: '500px', border: '3px solid #000000', margin:'30px'}}>
             <Card.Img className="text-center" variant="top" style={img}  src={product.img} alt={product.id}/>
             <Card.Body>
             <Card.Title className="text-center">{product.title}</Card.Title>
