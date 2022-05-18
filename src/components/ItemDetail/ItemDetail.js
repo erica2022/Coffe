@@ -1,27 +1,46 @@
-import { Container, Card } from "react-bootstrap"
+import { Container, Card, Row, Col } from "react-bootstrap"
 import ItemCount from "../ItemCount/ItemCount"
 
 export default function ItemDetail ({coffee}){
     const img =
     {
         width: "50%",
-        paddingLeft: "20px",
-        paddingTop: "20px",
+        padding: "10px 10px",
+        margin: "0 auto"
+    }
+
+    const titleCard =
+    {
+        color: "#666666",
+        textAlign: "center",
+        fontFamily: "'Roboto', sans-serif",
+        fontSize: "30px",
+        padding: "20px 20px"
     }
 
     return(
-        <Container>
-            <Card border="light" style={{ width: '18rem', height: '500px', border: '3px solid #000000', margin:'30px'}}>
-            <Card.Img className="text-center" style={img} variant="top" src={"http://http2.mlstatic.com/D_860323-MLA47965909503_102021-I.jpg"} alt={coffee.id}/>
-            <Card.Body>
-            <Card.Title className="text-center">{coffee.title}</Card.Title>
-            <Card.Text className="text-center"> 
-                <p>Stock: {coffee.available_quantity}</p>
-                <p>Precio: {coffee.price}</p>
-            </Card.Text>
-            <ItemCount stock = {coffee.available_quantity}/>
-            </Card.Body>
-            </Card>   
+       <Container>
+       <Row>         
+            <Col>
+            <Card border="light" style={{ width: '300', height: '300px', border: '0px solid #000000', margin:'30px'}}>
+            <Card.Img className="text-center" style={img} variant="top" src={coffee.img} alt={coffee.id}/>
+            </Card>                            
+            </Col>  
+            <Col>
+                <Card border="light" style={{ width: '500', height: '400px', border: '0px solid #000000', margin:'30px'}}>                                
+                <Card.Body>
+                <Card.Title style={titleCard}>{coffee.title}</Card.Title>
+                    <Card.Text> 
+                        <p className="textCard"><b>{coffee.description}</b></p>
+                        <p className="textCard"><b>Stock:</b> {coffee.stock}</p>
+                        <p className="textCard"><b>Precio:</b> {coffee.price}</p>
+                    </Card.Text>
+                    <ItemCount stock = {coffee.stock}/>
+                </Card.Body>
+                </Card>                  
+            </Col>   
+        </Row> 
+ 
         </Container>
     )
 }

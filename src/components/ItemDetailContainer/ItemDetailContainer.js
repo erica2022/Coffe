@@ -1,25 +1,18 @@
-import axios from "axios";
 import React from "react";
 import Coffee from "../ItemDetail/ItemDetail";
-import ItemDetail from "../ItemDetail/ItemDetail"
+import ItemDetail from "../ItemDetail/ItemDetail";
+import { products } from "../../data/Products";
+import Item from "../Item/Item";
 
-export default function ItemDetailContainer () {
-    const [coffee, setCoffee] = React.useState ([])
+export default function ItemDetailContainer ({ detailId }) {
+    const [item, setItem] = React.useState ([])
 
-    const getITem = () => {
-        axios.get("https://api.mercadolibre.com/sites/MLA/search?q=coffee")
-        .then(result => {
-            setCoffee(result.data.results[0])
-            console.log(coffee.id)
-            console.log(coffee.title)
-        })     
-    }
+    React.useEffect(() => {
+      setItem(products.find(item => item.id === +detailId));
+    }, [detailId]);
 
-    React.useEffect( () => {
-        getITem();
-    },[])
 
     return(
-        <ItemDetail coffee={coffee}/>
+        <ItemDetail coffee={item}/>
     )
 }
